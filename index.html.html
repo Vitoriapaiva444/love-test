@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Declaração de Amor - Dia dos Namorados</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap');
+
+    :root {
+      --color-primary: #e63946;
+      --color-secondary: #f1faee;
+      --color-accent: #a4161a;
+      --bg-gradient: linear-gradient(135deg, #f72585, #b5179e, #720026);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--color-secondary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      text-shadow: 0 0 8px rgba(0,0,0,0.3);
+      transition: opacity 0.3s;
+    }
+
+    h2 {
+      text-align: center;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      transition: opacity 0.3s;
+    }
+
+    form {
+      background: rgba(255 255 255 / 0.1);
+      padding: 1.5rem;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      transition: opacity 0.3s;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      border-radius: 8px;
+      border: none;
+      padding: 0.75rem;
+      font-size: 1rem;
+      resize: vertical;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    input[type="file"],
+    input[type="date"] {
+      margin-top: 0.5rem;
+      color: var(--color-secondary);
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      background: rgba(255 255 255 / 0.15);
+      padding: 0.4rem 0.6rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: var(--color-primary);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      margin-top: 1rem;
+      color: var(--color-secondary);
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--color-accent);
+    }
+
+    .preview-area {
+      margin-top: 2rem;
+      text-align: center;
+      max-width: 600px;
+      background: rgba(255 255 255 / 0.2);
+      border-radius: 12px;
+      padding: 1rem 2rem;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      color: var(--color-secondary);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .preview-message {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      white-space: pre-wrap;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .preview-dias-namoro {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--color-accent);
+      transition: opacity 0.3s;
+    }
+
+    /* Carrossel container */
+    .preview-photos {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 1.5rem auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border: 3px solid var(--color-secondary);
+    }
+
+    /* Cada imagem fica posicionada por cima da outra, só uma fica visível */
+    .preview-photos img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .preview-photos img.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .qr-code-container {
+      margin-top: 2rem;
+      text-align: center;
+      width: 180px;
+      height: 180px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      background: var(--color-secondary);
+      border-radius: 12px;
+      transition: opacity 0.3s;
+    }
+
+    .qr-code-label {
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--color-secondary);
+      text-shadow: 0 0 5px rgba(0,0,0,0.8);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+      form {
+        max-width: 100%;
+      }
+      .preview-photos {
+        width: 100px;
+        height: 100px;
+      }
+      .preview-photos img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Declaração de Amor</h1>
+  <h2>Dia dos Namorados - Personalize seu Recado</h2>
+
+  <form id="loveForm" novalidate>
+    <label for="dateNamoro">Data do início do namoro:</label>
+    <input type="date" id="dateNamoro" name="dateNamoro" required />
+
+    <label for="message">Sua declaração de amor:</label>
+    <textarea id="message" name="message" placeholder="Escreva aqui tudo o que sente..." required></textarea>
+
+    <label for="photos">Selecione até 3 fotos especiais (jpg, png):</label>
+    <input type="file" id="photos" name="photos" accept="image/png, image/jpeg" multiple />
+
+    <button type="submit">Criar Declaração</button>
+  </form>
+
+  <section class="preview-area" id="previewSection" style="display:none;">
+    <div class="preview-message" id="previewMessage"></div>
+    <div class="preview-dias-namoro" id="previewDiasNamoro"></div>
+    <div class="preview-photos" id="previewPhotos"></div>
+
+    <div class="qr-code-container">
+      <div class="qr-code-label">Acesse sua declaração pelo QR Code:</div>
+      <div id="qrcode"></div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script>
+    const loveForm = document.getElementById('loveForm');
+    const previewSection = document.getElementById('previewSection');
+    const previewMessage = document.getElementById('previewMessage');
+    const previewDiasNamoro = document.getElementById('previewDiasNamoro');
+    const previewPhotos = document.getElementById('previewPhotos');
+    const qrcodeContainer = document.getElementById('qrcode');
+    const dateNamoroInput = document.getElementById('dateNamoro');
+    const titleH1 = document.querySelector('h1');
+    const titleH2 = document.querySelector('h2');
+    const qrCodeContainerDiv = document.querySelector('.qr-code-container');
+
+    let currentPhotoIndex = 0;
+    let photoElements = [];
+    let carouselInterval;
+
+    function calculateDiasNamoro(startDate) {
+      const now = new Date();
+      const diffTime = now - startDate;
+      const diffDays = Math.floor(diffTime /
